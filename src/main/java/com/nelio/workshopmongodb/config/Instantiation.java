@@ -21,12 +21,12 @@ public class Instantiation implements CommandLineRunner {
 
         User joao = new User(null, "João", "joao@mail.com");
         User maria = new User(null, "Maria", "maria@mail.com");
-        User helena = new User(null, "Helena", "Helena@mail.com");
-        User alice = new User(null, "Alice", "Alice@mail.com");
-        User laura = new User(null, "Laura", "Laura@mail.com");
-        User manuela = new User(null, "Manuela", "Manuela@mail.com");
-        User sophia = new User(null, "Sophia", "Sophia@mail.com");
-        User isabella = new User(null, "Isabella", "Isabella@mail.com");
+        User helena = new User(null, "helena", "Helena@mail.com");
+        User alice = new User(null, "alice", "Alice@mail.com");
+        User laura = new User(null, "laura", "Laura@mail.com");
+        User manuela = new User(null, "manuela", "Manuela@mail.com");
+        User sophia = new User(null, "sophia", "Sophia@mail.com");
+        User isabella = new User(null, "isabella", "Isabella@mail.com");
 
         userRepository.saveAll(Arrays.asList(joao, maria ,helena,alice, laura, manuela, sophia, isabella ));
 
