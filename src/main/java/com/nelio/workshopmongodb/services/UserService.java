@@ -1,6 +1,7 @@
 package com.nelio.workshopmongodb.services;
 
 import com.nelio.workshopmongodb.domain.User;
+import com.nelio.workshopmongodb.dto.UserDTO;
 import com.nelio.workshopmongodb.repository.UserRepository;
 import com.nelio.workshopmongodb.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +23,19 @@ public class UserService {
     public User findById(String id){
         Optional<User> user = repo.findById(id);
         if (user.isEmpty()){
-            throw new ObjectNotFoundException("Objeto nao encontrado");
+            throw new ObjectNotFoundException("Objeto não encontrado");
         }
 
         User userEntity = user.get();
-//        u.setId(user.get().getId());
-//        u.setName(user.get().getName());
-//        u.setEmail(user.get().getEmail());
 
         return userEntity;
+    }
+
+    public User insert(User obj){
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto){
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
