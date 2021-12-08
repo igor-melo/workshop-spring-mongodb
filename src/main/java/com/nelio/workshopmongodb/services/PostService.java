@@ -18,7 +18,6 @@ public class PostService {
     @Autowired
     private PostRepository repo;
 
-
     public Post findById(String id){
         Optional<Post> post = repo.findById(id);
         if (post.isEmpty()){
@@ -28,6 +27,10 @@ public class PostService {
         Post userEntity = post.get();
 
         return userEntity;
+    }
+
+    public List<Post> findByTitle(String text){
+        return repo.findByTitleContaining(text);
     }
 
 
