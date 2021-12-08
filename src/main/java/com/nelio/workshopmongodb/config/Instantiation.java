@@ -2,6 +2,7 @@ package com.nelio.workshopmongodb.config;
 
 import com.nelio.workshopmongodb.domain.Post;
 import com.nelio.workshopmongodb.domain.User;
+import com.nelio.workshopmongodb.dto.AuthorDTO;
 import com.nelio.workshopmongodb.repository.PostRepository;
 import com.nelio.workshopmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +40,14 @@ public class Instantiation implements CommandLineRunner {
         User sophia = new User(null, "sophia", "Sophia@mail.com");
         User isabella = new User(null, "isabella", "Isabella@mail.com");
 
-        Post post1 = new Post(null, sdf.parse("01/03/2018"), "Partiu viagem!", "Vou viajar para SP abraços!", joao);
-        Post post2 = new Post(null, sdf.parse("15/03/2018"), "Dicas rápidas", "Beba agua", maria);
-        Post post3 = new Post(null, sdf.parse("06/04/2018"), "Sites gratuitos", "Google", helena);
-        Post post4 = new Post(null, sdf.parse("18/06/2018"), "Dicas para melhorar ", "Se ajude", alice);
-        Post post5 = new Post(null, sdf.parse("11/07/2018"), "O segredo", "Nao conto", joao);
-
         userRepository.saveAll(Arrays.asList(joao, maria ,helena,alice, laura, manuela, sophia, isabella ));
+
+        Post post1 = new Post(null, sdf.parse("01/03/2018"), "Partiu viagem!", "Vou viajar para SP abraços!", new AuthorDTO(joao));
+        Post post2 = new Post(null, sdf.parse("15/03/2018"), "Dicas rápidas", "Beba agua", new AuthorDTO(maria));
+        Post post3 = new Post(null, sdf.parse("06/04/2018"), "Sites gratuitos", "Google", new AuthorDTO(helena));
+        Post post4 = new Post(null, sdf.parse("18/06/2018"), "Dicas para melhorar ", "Se ajude", new AuthorDTO(alice));
+        Post post5 = new Post(null, sdf.parse("11/07/2018"), "O segredo", "Nao conto", new AuthorDTO(joao));
+
         postRepository.saveAll(Arrays.asList(post1,post2,post3,post4,post5));
 
     }
