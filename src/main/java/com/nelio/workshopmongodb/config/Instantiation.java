@@ -3,6 +3,7 @@ package com.nelio.workshopmongodb.config;
 import com.nelio.workshopmongodb.domain.Post;
 import com.nelio.workshopmongodb.domain.User;
 import com.nelio.workshopmongodb.dto.AuthorDTO;
+import com.nelio.workshopmongodb.dto.CommentDTO;
 import com.nelio.workshopmongodb.repository.PostRepository;
 import com.nelio.workshopmongodb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,17 @@ public class Instantiation implements CommandLineRunner {
         Post post3 = new Post(null, sdf.parse("06/04/2018"), "Sites gratuitos", "Google", new AuthorDTO(helena));
         Post post4 = new Post(null, sdf.parse("18/06/2018"), "Dicas para melhorar ", "Se ajude", new AuthorDTO(alice));
         Post post5 = new Post(null, sdf.parse("11/07/2018"), "O segredo", "Nao conto", new AuthorDTO(joao));
+
+        CommentDTO c1 = new CommentDTO("Boa viagem!", sdf.parse("02/03/2018"), new AuthorDTO(laura));
+        CommentDTO c2 = new CommentDTO("Vai pela sombra.", sdf.parse("01/03/2018"), new AuthorDTO(manuela));
+        CommentDTO c3 = new CommentDTO("Vamos hidratar!", sdf.parse("15/03/2018"), new AuthorDTO(sophia));
+        CommentDTO c4 = new CommentDTO("Ate vó ja sabia esse", sdf.parse("06/04/2018"), new AuthorDTO(isabella));
+        CommentDTO c5 = new CommentDTO("Nem eu", sdf.parse("12/07/2018"), new AuthorDTO(maria));
+
+        post1.getComments().addAll(Arrays.asList(c1,c2));
+        post2.getComments().addAll(Arrays.asList(c3));
+        post3.getComments().addAll(Arrays.asList(c4));
+        post5.getComments().addAll(Arrays.asList(c5));
 
         postRepository.saveAll(Arrays.asList(post1,post2,post3,post4,post5));
 
